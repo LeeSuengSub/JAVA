@@ -48,12 +48,23 @@ public class Bank {
 	public static void main(String[] args) {
 		Account a = new Account();
 //		if(a.getTotalCash() > 0) {
-			a.setInCash(1000);
+			a.setInCash(100000);
 			a.setOutCash(400);
 			a.getTotalCash();
 			a.setInCash(80000);
 			a.setOutCash(400);
 			a.getTotalCash();
+			a.setInCash(400000);
+			a.setInCash(300000);
+			int money = a.getTotalCash();
+			if(a.getTotalCash() > 1000000) {
+				System.out.println("이자가 10%");
+				int intersetMoney = (int)bonus(money);
+				System.out.println("이자는 => "+intersetMoney);
+				a.setTotalCash(intersetMoney);
+				a.getTotalCash();
+			}
+			
 //		}
 		
 	}
