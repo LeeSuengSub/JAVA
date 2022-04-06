@@ -1,20 +1,20 @@
-package 자습;
+package 상속;
 
-class Account{
-	int inCash;//입금
-	int outCash;//출금
-	int totalCash;//잔고	
+class Cash{
+	int inCash;
+	int outCash;
+	int totalCash;
 	
 	public int getInCash() {
 		return inCash;
 	}
 	public void setInCash(int inCash) {
-		if(inCash <500000) {			
-		System.out.println(inCash+"를 입금하였습니다.");
-		this.inCash += inCash;
-		this.totalCash+= inCash;
+		if(inCash < 500000) {
+			this.inCash += inCash;
+			this.totalCash += inCash;
+			System.out.println(inCash+"원을 입금하였습니다.");
 		}else {
-			System.out.println("입금 금액이 초과하였습니다.");
+			System.out.println("입금금액을 초과하였습니다.");
 		}
 	}
 	public int getOutCash() {
@@ -22,51 +22,50 @@ class Account{
 	}
 	public void setOutCash(int outCash) {
 		if(this.totalCash > outCash) {			
-			this.outCash += outCash;
-			this.totalCash -= outCash;
-			System.out.println(outCash+"원이 출금되었습니다.");
-		}else {			
-			System.out.println("통장 잔고가 부족합니다.");
+		this.outCash += outCash;
+		this.totalCash -= outCash;
+		System.out.println(outCash+"원을 출금합니다.");
+		}else {
+			System.out.println("통장에 돈이 모잘랐니다.");
 		}
 	}
 	public int getTotalCash() {
-		System.out.println("현재 통장의 잔고는 "+ this.totalCash);
+//		System.out.println("현재 통장의 잔고는 "+this.totalCash+"입니다.");
 		return totalCash;
 	}
 	public void setTotalCash(int totalCash) {
-		this.totalCash = totalCash;
+		this.totalCash += totalCash;
 	}
 	
 }
 
-public class Bank {
+public class BankP {
+
 	public static double bonus(int money) {
-		final double interest_Rate = 0.1;
-		return money * interest_Rate;
+		final double interest_rest = 0.1;
+		return money*interest_rest;
 	}
 	
 	public static void main(String[] args) {
-		Account a = new Account();
-//		if(a.getTotalCash() > 0) {
-			a.setInCash(100000);
-			a.setOutCash(400);
-			a.getTotalCash();
-			a.setInCash(80000);
-			a.setOutCash(400);
-			a.getTotalCash();
-			a.setInCash(400000);
-			a.setInCash(300000);
-			int money = a.getTotalCash();
-			if(a.getTotalCash() > 1000000) {
-				System.out.println("이자가 10%");
-				int intersetMoney = (int)bonus(money);
-				System.out.println("이자는 => "+intersetMoney);
-				a.setTotalCash(intersetMoney);
-				a.getTotalCash();
+		Cash cash = new Cash();
+		cash.setInCash(10000);
+		if(cash.getTotalCash() > 0) {
+			cash.setInCash(50000);
+			cash.setInCash(400000);
+			cash.setInCash(400000);
+			cash.setInCash(400000);
+			System.out.println("현재 통장에 잔고는 "+cash.getTotalCash()+"원 입니다.");
+			int myMoney = cash.getTotalCash();
+			if(cash.getTotalCash() > 1000000) {
+				int interestMoney = (int)bonus(myMoney);
+				System.out.println("이자는 ==> "+interestMoney);
+				cash.setTotalCash(interestMoney);
+				System.out.println("통장 잔고는 => "+cash.getTotalCash());
 			}
-			
-//		}
+		}
 		
 	}
 
 }
+
+// 마지막에 이자를 더한 금액이 안나온 이유: setTotalCash부분을 +=가 아닌 =로 더하는게 아님 대입으로 표시되어있었음.
