@@ -1,4 +1,4 @@
-package 상속;
+package 자습;
 
 class Cash{
 	int inCash;
@@ -39,7 +39,7 @@ class Cash{
 	
 }
 
-public class BankP {
+public class Bank {
 
 	public static double bonus(int money) {
 		final double interest_rest = 0.1;
@@ -50,18 +50,21 @@ public class BankP {
 		Cash cash = new Cash();
 		cash.setInCash(10000);
 		if(cash.getTotalCash() > 0) {
-			cash.setInCash(50000);
+			cash.setInCash(300000);
+			System.out.println("현재 통장의 잔고는 "+cash.totalCash+"입니다.");
 			cash.setInCash(400000);
+			System.out.println("현재 통장의 잔고는 "+cash.totalCash+"입니다.");
 			cash.setInCash(400000);
+			System.out.println("현재 통장의 잔고는 "+cash.totalCash+"입니다.");
 			cash.setInCash(400000);
-			System.out.println("현재 통장에 잔고는 "+cash.getTotalCash()+"원 입니다.");
+			System.out.println("현재 통장의 잔고는 "+cash.totalCash+"입니다.");
 			int myMoney = cash.getTotalCash();
 			if(cash.getTotalCash() > 1000000) {
 				int interestMoney = (int)bonus(myMoney);
 				System.out.println("이자는 ==> "+interestMoney);
 				cash.setTotalCash(interestMoney);
 				System.out.println("통장 잔고는 => "+cash.getTotalCash());
-			}
+			}			
 		}
 		
 	}
