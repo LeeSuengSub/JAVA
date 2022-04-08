@@ -23,6 +23,8 @@ public class EmpMain {
 		String name1 = "아이유";//메소드 이해를 위한 예제
 		getValue(name1);//메소드 호출을 위한 예제
 		
+		System.out.println("-----------------------------------");
+		
 		ArrayList<EmpVO> list = new ArrayList<EmpVO>();
 		list.add(new EmpVO(7369,"SMITH","CLERK","1980-12-17",800,20,0));
 		list.add(new EmpVO(7499,"ALLEN","SALESMAN","1981-02-20",1600,30,300));
@@ -41,6 +43,8 @@ public class EmpMain {
 
 		
 		getEmpList(list);//메소드로 호출
+		
+		System.out.println("-----------------------------------");
 		
 		//일반 for문
 		//문제1. 모든 사원 번호, 이름 출력
@@ -64,8 +68,8 @@ public class EmpMain {
 			//JAVA는 문자를 비교할 때 equals()를 사용. 자바에서는 문자를 비교할 때 == 사용하면 문자를 비교하는게 아님.
 			if(list.get(i).job.equals("SALESMAN")) {
 				if(list.get(i).sal >= 1400) {
-					System.out.println("직업이 SALESMAN이면서 급여가 1400달러 이상인 직원 : "+list.get(i).empno);
-					System.out.println("직업이 SALESMAN이면서 급여가 1400달러 이상인 직원 : "+list.get(i).ename);
+					System.out.println("사원번호 : "+list.get(i).empno);
+					System.out.println("직원 : "+list.get(i).ename);
 				}
 			}
 		}
@@ -166,16 +170,16 @@ public class EmpMain {
 		System.out.println("empno: "+list.get(10).empno+"  comm: "+list.get(10).comm);
 		System.out.println("-----------------------------------");
 
-		////4. 사원이름이 null인 사원이름에 '데이터 없음' 으로 수정하시오. 
-		for(int i=0; i<list.size();i++) {
-			if(list.get(i).ename ==null) {
-				list.get(i).ename = "데이터_없음";
-			}
-		}
-		System.out.println(list.get(13).ename);
-		System.out.println("-----------------------------------");
-		
-		//5. 20번 부서가 올해 실적이 좋지 않습니다. 20번부서를 모두 해고(제거) 하십시오.
+		//4. 사원이름이 null인 사원이름에 '데이터 없음' 으로 수정하시오. 
+//		for(int i=0; i<list.size();i++) {
+//			if(list.get(i).ename ==null) {
+//				list.get(i).ename = "데이터_없음";
+//			}
+//		}
+//		System.out.println(list.get(13).ename);
+//		System.out.println("-----------------------------------");
+//		
+//		5. 20번 부서가 올해 실적이 좋지 않습니다. 20번부서를 모두 해고(제거) 하십시오.
 		for(int i=0; i<list.size(); i++) {
 			if(list.get(i).deptno == 20) {
 				list.remove(i);
@@ -184,7 +188,111 @@ public class EmpMain {
 		}
 		
 		//for-each
-//		for(EmpVO vo : list) {}
+		for(EmpVO vo : list) {
+			System.out.println(vo.empno+" "+vo.ename);
+		}
+		System.out.println("-----------------------------------");
+		for(EmpVO vo : list) {
+			if(vo.sal > 1300) {
+				System.out.println(vo.sal+" "+vo.job);
+			}
+		}
+		System.out.println("-----------------------------------");
+		for(EmpVO vo : list) {
+			if(vo.job.equals("SALESMAN")) {
+				if(vo.sal > 1400) {
+					System.out.println(vo.ename+" "+vo.sal);
+				}
+			}			
+		}
+		System.out.println("-----------------------------------");
+		int count5 =0;
+		for(EmpVO vo : list) {
+			if(vo.job.equals("MANAGER")) {
+				++count5;
+			}
+		}
+		System.out.println(count5);
+		System.out.println("-----------------------------------");
+		int result = 0;
+		for(EmpVO vo : list) {
+			if(result < vo.sal) {
+				result = vo.sal;
+			}
+		}
+		System.out.println(result);
+		System.out.println("-----------------------------------");
+		int count01 = 0;
+		int count02 = 0;
+		int count03 = 0;
+		for(EmpVO vo : list) {
+			if(vo.deptno == 10) {
+				++count01;
+			}
+			if(vo.deptno ==20) {
+				++count02;
+			}
+			if(vo.deptno == 30) {
+				++count03;
+			}
+		}
+		System.out.println(count01+" "+count02+" "+count03);
+		System.out.println("-----------------------------------");
+		
+		for(EmpVO vo : list) {
+			String year = vo.hiredate.split("-")[0];
+			if(year.equals("1981")) {
+				System.out.println(vo.ename+" "+vo.hiredate);
+			}
+		}
+		System.out.println("-----------------------------------");
+		for(EmpVO vo : list) {
+			String month = vo.hiredate.split("-")[1];
+			if(month.equals("02")) {
+				System.out.println(vo.ename+" "+vo.hiredate);
+			}
+		}
+		System.out.println("-----------------------------------");
+		int countB =0;
+		for(EmpVO vo : list) {
+			if(vo.comm != 0) {
+				++countB;
+			}
+		}
+		System.out.println(countB);
+		System.out.println("-----------------------------------");
+		int sum2 = 0;
+		int avg2 = 0;
+		for(EmpVO vo : list) {
+			sum2+= vo.sal;
+			avg2 = sum2/list.size();
+		}
+		System.out.println(avg2);
+		System.out.println("-----------------------------------");
+		//3. 사원번호가 7844, 7876인 사원에게 comm 200을 지급하시오.
+		for(EmpVO vo:list) {
+			if(vo.empno == 7844 || vo.empno == 7876) {
+				vo.comm = 200;
+			}
+			System.out.println(vo.empno+" "+vo.comm);
+		}
+		System.out.println("-----------------------------------");
+		//4. 사원이름이 null인 사원이름에 '데이터 없음' 으로 수정하시오. 
+		for(EmpVO vo : list) {
+			if(vo.ename == null) {
+				vo.ename = "데이터없음";
+			}
+			System.out.println(vo.ename);
+		}
+		System.out.println("-----------------------------------");
+		//5. 20번 부서가 올해 실적이 좋지 않습니다. 20번부서를 모두 해고(제거) 하십시오.
+		for(EmpVO vo : list) {
+			if(vo.deptno != 20) {
+				System.out.println(vo.deptno);
+			}
+		}
+		//for문으로~
+		
 	}
 
 }
