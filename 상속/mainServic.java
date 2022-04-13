@@ -35,23 +35,18 @@ class MainUtil{
 	}
 	
 	public String getUser(List<UserVO> list, String name){ //특정 유저 호출
-		for(UserVO vo : list) {
-			if(vo.getName().equals(name)) {
-				return vo.getName();
-			}
-		}
 		return name;
 	}
 	
 	public List<UserVO> deleteUser(List<UserVO> list, int index){
-		list.remove(index);
+		list.remove(index).getName();
 		return list;
 	}
 	
 	public int getUserTotalSal(List<UserVO> list){
 		int sum = 0;
-		for(UserVO vo : list) {
-			sum += vo.getSal();
+		for(int i=0; i<list.size();i++) {
+			sum+= list.get(i).getSal();
 		}
 		return sum;
 	}
