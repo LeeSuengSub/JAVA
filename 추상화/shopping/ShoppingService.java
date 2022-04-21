@@ -13,11 +13,11 @@ import java.util.Locale;
 
 public class ShoppingService implements ShoppingServiceImpl {
 
-			//8. ±¸¸ÅÀÌ·ÂÀÌ ÀÖ´Â È¸¿ø¸¸ Á¶È¸.
+			//8. êµ¬ë§¤ì´ë ¥ì´ ìˆëŠ” íšŒì›ë§Œ ì¡°íšŒ.
 	
 	@Override
 	public List<UserVO> getUserList(List<UserVO> list) {
-		//1. È¸¿ø Áß Æ÷ÀÎÆ®°¡ °¡Àå ¸¹Àº È¸¿ø Á¤º¸ Á¶È¸.(´Ü, Áßº¹µ¥ÀÌÅÍ´Â ¾ø´Ù°í °¡Á¤)
+		//1. íšŒì› ì¤‘ í¬ì¸íŠ¸ê°€ ê°€ì¥ ë§ì€ íšŒì› ì •ë³´ ì¡°íšŒ.(ë‹¨, ì¤‘ë³µë°ì´í„°ëŠ” ì—†ë‹¤ê³  ê°€ì •)
 		int max = 0;
 		int temp = 0;
 		for(int i=0; i<list.size(); i++) {
@@ -26,13 +26,13 @@ public class ShoppingService implements ShoppingServiceImpl {
 				temp = i;
 			}
 		}
-		System.out.println("»ç¿ëÀÚ No."+list.get(temp).getUserNo()+" , »ç¿ëÀÚ Æ÷ÀÎÆ®."+list.get(temp).getPoint()+" , »ç¿ëÀÚ ÀÌ¸§."+list.get(temp).getUserName()+" ,»ç¿ëÀÚ ÃÖ±Ù ±¸¸ÅÀÏ."+list.get(temp).getVisitAt());
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ No."+list.get(temp).getUserNo()+" , ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®."+list.get(temp).getPoint()+" , ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½."+list.get(temp).getUserName()+" ,ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½."+list.get(temp).getVisitAt());
 		return list;
 	}
 
 	@Override
 	public List<UserVO> getFindByName(List<UserVO> list, String word) {
-		//2. È¸¿ø Áß ¾Õ±ÛÀÚ¿¡ S°¡ µé¾î°£ È¸¿ø Á¤º¸ Á¶È¸.
+		//2. íšŒì› ì¤‘ ì•ê¸€ìì— Sê°€ ë“¤ì–´ê°„ íšŒì› ì •ë³´ ì¡°íšŒ.
 		
 		for(int i=0; i<list.size(); i++) {
 			String str = list.get(i).getUserName().substring(0,1);
@@ -45,20 +45,20 @@ public class ShoppingService implements ShoppingServiceImpl {
 
 	@Override
 	public int getSleeperUserCount(List<UserVO> list) {
-		//4. ÈŞ¸Õ°èÁ¤ ÀÎ¿ø ¼ö Á¶È¸.
+		//4. íœ´ë¨¼ê³„ì • ì¸ì› ìˆ˜ ì¡°íšŒ.
 		int count = 0;
 		for(int i=0; i<list.size();i++) {
 			if(list.get(i).isSleeper()) {
 				++count;
 			}
 		}
-		System.out.println("ÈŞ¸Õ °èÁ¤Àº ÃÑ "+count+"°³ ÀÔ´Ï´Ù.");
+		System.out.println("ï¿½Ş¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ "+count+"ï¿½ï¿½ ï¿½Ô´Ï´ï¿½.");
 		return count;
 	}
 
 	@Override
 	public List<UserVO> updateNotSleeperToSleeper(List<UserVO> list, int days) {
-//		//3. ÇöÀç³¯Â¥ ±âÁØÀ¸·Î 90ÀÏµ¿¾È ¹æ¹® ¾ø¾ú´ø È¸¿ø ÈŞ¸Õ °èÁ¤À¸·Î ¼öÁ¤.
+//		//3. í˜„ì¬ë‚ ì§œ ê¸°ì¤€ìœ¼ë¡œ 90ì¼ë™ì•ˆ ë°©ë¬¸ ì—†ì—ˆë˜ íšŒì› íœ´ë¨¼ ê³„ì •ìœ¼ë¡œ ìˆ˜ì •.
 //		LocalDate currentDate = LocalDate.now();
 ////		System.out.println(currentDate);
 //		LocalDate date = currentDate.minusDays(days);
@@ -70,22 +70,22 @@ public class ShoppingService implements ShoppingServiceImpl {
 //			if(date.isAfter(time)) {
 //				list.get(i).setSleeper(true);
 //			}
-//			System.out.println("ÀÌ¸§Àº "+list.get(i).getUserName()+", ÈŞ¸é°èÁ¤¿©ºÎ: "+list.get(i).isSleeper());
+//			System.out.println("ì´ë¦„ì€ "+list.get(i).getUserName()+", íœ´ë©´ê³„ì •ì—¬ë¶€: "+list.get(i).isSleeper());
 //		}
 //		return list;
 		
 		Date d = new Date();
-		//1. ¿À´Ã³¯Â¥¸¦ ±¸ÇØ¾ß ÇÔ.
+		//1. ì˜¤ëŠ˜ë‚ ì§œë¥¼ êµ¬í•´ì•¼ í•¨.
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd",Locale.KOREA);
-		String strToday = formatter.format(Calendar.getInstance().getTime());//¿À´Ã³¯Â¥ ¸®ÅÏ
-		Date today = null;//¿À´Ã ³¯Â¥
-		Date visit = null;//¹æ¹® ³¯Â¥
+		String strToday = formatter.format(Calendar.getInstance().getTime());//ì˜¤ëŠ˜ë‚ ì§œ ë¦¬í„´
+		Date today = null;//ì˜¤ëŠ˜ ë‚ ì§œ
+		Date visit = null;//ë°©ë¬¸ ë‚ ì§œ
 		try {
 			for(int i=0; i<list.size();i++) {
 				String strVisitAt = list.get(i).getVisitAt();
 			today = formatter.parse(strToday);
 			visit = formatter.parse(strVisitAt);
-			long diffDay = (today.getTime() - visit.getTime()) / (1000*60*60*24); //ÀÏ ±¸ÇÏ±â
+			long diffDay = (today.getTime() - visit.getTime()) / (1000*60*60*24); //ì¼ êµ¬í•˜ê¸°
 			if(diffDay >= days) {
 				list.get(i).setSleeper(true);
 			}else {
@@ -94,14 +94,14 @@ public class ShoppingService implements ShoppingServiceImpl {
 			System.out.println(list.get(i).getUserName()+", "+list.get(i).isSleeper());
 			}
 		} catch (ParseException e) {
-			e.printStackTrace(); //¿¡·¯¸¦ ÃßÀûÇÏ°Ú´Ù!
+			e.printStackTrace(); //ì—ëŸ¬ë¥¼ ì¶”ì í•˜ê² ë‹¤!
 		}
 		return list;
 	}
 
 	@Override
 	public List<UserVO> updatePoint(List<UserVO> list, int point) {
-		//5. ÈŞ¸Õ°èÁ¤ÀÌ ¾Æ´Ñ È¸¿ø¿¡°Ô 100Æ÷ÀÎÆ® Ãß°¡ Áö±Ş.
+		//5. íœ´ë¨¼ê³„ì •ì´ ì•„ë‹Œ íšŒì›ì—ê²Œ 100í¬ì¸íŠ¸ ì¶”ê°€ ì§€ê¸‰.
 		int getPoint = 0;
 		for(int i=0; i<list.size(); i++) {
 			if(!list.get(i).isSleeper()) {
@@ -114,7 +114,7 @@ public class ShoppingService implements ShoppingServiceImpl {
 
 	@Override
 	public UserVO getPointRankerUser(List<UserVO> list) {
-		//6. Æ÷ÀÎÆ®°¡ °¡Àå ³ôÀº È¸¿ø Á¶È¸.(´Ü, Áßº¹µ¥ÀÌÅÍ´Â ¾ø´Ù°í °¡Á¤)
+		//6. í¬ì¸íŠ¸ê°€ ê°€ì¥ ë†’ì€ íšŒì› ì¡°íšŒ.(ë‹¨, ì¤‘ë³µë°ì´í„°ëŠ” ì—†ë‹¤ê³  ê°€ì •)
 		int max = 0;
 		int temp = 0;
 		for(int i=0; i<list.size(); i++) {
@@ -123,14 +123,14 @@ public class ShoppingService implements ShoppingServiceImpl {
 				temp = i;
 			}
 		}
-		System.out.println("»ç¿ëÀÚ No."+list.get(temp).getUserNo()+" , »ç¿ëÀÚ Æ÷ÀÎÆ®."+list.get(temp).getPoint()+" , »ç¿ëÀÚ ÀÌ¸§."+list.get(temp).getUserName()+" ,»ç¿ëÀÚ ÃÖ±Ù ±¸¸ÅÀÏ."+list.get(temp).getVisitAt());
+		System.out.println("ì‚¬ìš©ì No."+list.get(temp).getUserNo()+" , ì‚¬ìš©ì í¬ì¸íŠ¸."+list.get(temp).getPoint()+" , ì‚¬ìš©ì ì´ë¦„."+list.get(temp).getUserName()+" ,ì‚¬ìš©ì ìµœê·¼ êµ¬ë§¤ì¼."+list.get(temp).getVisitAt());
 		return null;
 	}
 
 	@Override
 	public List<UserVO> getPurchaseRankerUser(List<UserVO> list, ProductVO vo, int userNo) {
-		//7. Æ¯Á¤ È¸¿ø¿¡°Ô »óÇ°±¸¸Å ¹ß»ı.
-	    //   ±¸¸ÅÇÑ »óÇ°ÀÇ °¡°İ 5%°¡ Æ÷ÀÎÆ®·Î Áö±Ş.
+		//7. íŠ¹ì • íšŒì›ì—ê²Œ ìƒí’ˆêµ¬ë§¤ ë°œìƒ.
+	    //   êµ¬ë§¤í•œ ìƒí’ˆì˜ ê°€ê²© 5%ê°€ í¬ì¸íŠ¸ë¡œ ì§€ê¸‰.
 		double plusPoint = 0.05;
 		for(int i=0; i<list.size();i++) {
 			int totalPoint = list.get(i).getPoint();
@@ -140,7 +140,7 @@ public class ShoppingService implements ShoppingServiceImpl {
 				totalPoint = list.get(i).getPoint()+(int)pricePoint;
 			}
 //			System.out.println(list.get(i).getPoint());
-			System.out.println("È¸¿øÀÌ¸§Àº : "+list.get(i).getUserName()+", ÃÑ Æ÷ÀÎÆ®´Â "+totalPoint);
+			System.out.println("íšŒì›ì´ë¦„ì€ : "+list.get(i).getUserName()+", ì´ í¬ì¸íŠ¸ëŠ” "+totalPoint);
 		}
 		return list;
 	}
