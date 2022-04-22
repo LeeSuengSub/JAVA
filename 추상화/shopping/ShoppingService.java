@@ -26,7 +26,7 @@ public class ShoppingService implements ShoppingServiceImpl {
 				temp = i;
 			}
 		}
-		System.out.println("����� No."+list.get(temp).getUserNo()+" , ����� ����Ʈ."+list.get(temp).getPoint()+" , ����� �̸�."+list.get(temp).getUserName()+" ,����� �ֱ� ������."+list.get(temp).getVisitAt());
+		System.out.println("사용자 No."+list.get(temp).getUserNo()+" , 사용자 포인트."+list.get(temp).getPoint()+" , 사용자 이름."+list.get(temp).getUserName()+" ,사용자 최근 구매일."+list.get(temp).getVisitAt());
 		return list;
 	}
 
@@ -52,7 +52,7 @@ public class ShoppingService implements ShoppingServiceImpl {
 				++count;
 			}
 		}
-		System.out.println("�޸� ������ �� "+count+"�� �Դϴ�.");
+		System.out.println("휴먼 계정은 총 "+count+"개 입니다.");
 		return count;
 	}
 
@@ -102,8 +102,8 @@ public class ShoppingService implements ShoppingServiceImpl {
 	@Override
 	public List<UserVO> updatePoint(List<UserVO> list, int point) {
 		//5. 휴먼계정이 아닌 회원에게 100포인트 추가 지급.
-		int getPoint = 0;
 		for(int i=0; i<list.size(); i++) {
+			int getPoint = list.get(i).getPoint();
 			if(!list.get(i).isSleeper()) {
 				getPoint = list.get(i).getPoint() + point;
 			}
@@ -140,7 +140,7 @@ public class ShoppingService implements ShoppingServiceImpl {
 				totalPoint = list.get(i).getPoint()+(int)pricePoint;
 			}
 //			System.out.println(list.get(i).getPoint());
-			System.out.println("회원이름은 : "+list.get(i).getUserName()+", 총 포인트는 "+totalPoint);
+			System.out.println("회원이름은 : "+list.get(i).getUserName()+", 총 포인트 : "+totalPoint);
 		}
 		return list;
 	}
