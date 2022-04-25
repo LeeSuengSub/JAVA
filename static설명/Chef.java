@@ -1,10 +1,10 @@
-package ½ºÅÂÆ½;
+package ?;
 
 public class Chef {
 
-	private static Chef chef = null;//½ºÅÂÆ½À¸·Î ¼±¾ğµÈ Å¬·¡½º º¯¼ö
+	private static Chef chef = null;//?  ? 
 	
-	public static Chef getInstance() { //½ºÅÂÅÃÀ¸·Î ¼±¾ğµÈ ¸Ş¼Òµå
+	public static Chef getInstance() { //  ??
 		if(chef ==null) {
 			chef = new Chef();
 		}
