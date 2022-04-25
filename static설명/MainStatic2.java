@@ -1,4 +1,4 @@
-package ½ºÅÂÆ½;
+package test;
 
 public class MainStatic2 {
 
