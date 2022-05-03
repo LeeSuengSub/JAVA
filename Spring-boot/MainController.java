@@ -60,13 +60,17 @@ public class MainController {
 		list.add(vo5);
 		return list;
 	}
+	// @GetMapping("/list")
+	// public List<UserVO> callUserList(){
+	// 	List<UserVO> list = new ArrayList<UserVO>();
+	// 	for(int i=0; i<5;i++) {
+	// 		list.add(new UserVO("홍길동",30,"대전"));
+	// 	}
+	// 	return list;
+	// }
 	@GetMapping("/list")
 	public List<UserVO> callUserList(){
-		List<UserVO> list = new ArrayList<UserVO>();
-		for(int i=0; i<5;i++) {
-			list.add(new UserVO("홍길동",30,"대전"));
-		}
-		return list;
+		return service.getUserList();
 	}
 	//회사마다 call, load를 이름에 붙임.
 }
