@@ -158,3 +158,143 @@
 ---
 
 ![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(101).png>)
+
+## 기본 클래스(2)
+
+---
+
+### String 클래스
+
+---
+
+- String을 선언하는 두 가지 방법  
+  ![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(102).png>)
+
+- 힙 메모리에 인스턴스로 생성되는 경우와 상수 풀(constant pool)에 있는 주소를 참조하는 방법 두가지  
+  ![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(103).png>)
+
+#### String 클래스로 문자열 연결
+
+---
+
+- 한번 생성된 String값(문자열)은 불변(immutable)
+- 두 개의 문자열을 연결하면 새로운 인스턴스가 생성됨
+- 문자열 연결을 계속하면 메모리에 gabage가 많이 생길 수 있음
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(104).png>)
+
+#### StringBuilder, StringBuffer 사용하기
+
+---
+
+- 내부적으로 가변적인 char[] 배열을 가지고 있는 클래스
+- 문자열을 여러 번 연결하거나 변경할 때 사용하면 유용함
+- 매번 새로 생성하지 않고 기존 배열을 변경하므로 gabage가 생기지 않음
+- StringBuffer는 멀티 쓰레드 프로그래밍에서 동기화(sybchronization)을 보장
+- 단일 쓰레드 프로그램에서는 StringBuilder를 사용하기를 권장
+- toString()메소드로 String반환
+
+#### StringBuilder 테스트
+
+---
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(105).png>)
+
+#### StringBuilder 테스트
+
+---
+
+메모리 구조
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(106).png>)
+
+### Wrapper 클래스
+
+---
+
+- 기본 자료형(primitive data type)에 대한 클래스  
+  ![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(107).png>)
+
+### 오토박싱(autoboxing)과 언박싱(unboxing)
+
+---
+
+- Integer는 객체이고, int는 4바이트 기본 자료형임
+- 두 개의 자료를 같이 연산 할 때 자동으로 변환이 일어남
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(108).png>)
+
+### Class 클래스
+
+---
+
+- 자바의 모든 클래스와 인터페이스는 컴파일 후 class 파일로 생성됨
+- class 파일에는 객체의 정보(멤버변수, 메소드, 생성자등)가 포함되어 있음
+- Class 클래스는 컴파일된 class 파일에서 객체의 정보를 가져올 수 있음
+
+#### Class 클래스 가져오기
+
+---
+
+1. Object 클래스의 getClass() 메소드 사용하기
+
+```
+String s = new String();
+Class c = s.getClass();//getClass()메소드의 반환형은 Class
+```
+
+2. 클래스 파일 이름을 Class 변수에 직접 대입하기
+
+```
+Class c = String Class;
+```
+
+3. Class.forName("클래스이름")메소드 사용하기
+
+```
+Clss c = Class.forName("java.lang.String");
+```
+
+#### Class 클래스 가져오기 예제
+
+---
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(109).png>)
+
+#### Class 클래스로 정보 가져오기
+
+---
+
+- reflection 프로그래밍 : Class클래스를 이용해서 클래스의 정보(생성자, 멤버변수, 메소드)를 가져오고 이를 활용하며 인스턴스를 생성하고, 메소드를 호출하는 등의 프로그래밍 방식
+- 로컬 메모리에 객체가 없어서 객체의 데이터 타입을 직접 알 수 없는 경우(원격에 객체가 있는 경우등) 객체 정보만을 이용하여 프로그래밍 할 수있음.
+- Constructor, Method, Filed 등 java.lang.reflect 패키지에 있는 클래스들을 활용하여 프로그래밍
+- 일반적으로 자료형을 알 수 있는 경우에는 사용하지 않음
+
+#### Class 클래스 메소드 활용하기 예제
+
+---
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(110).png>)
+
+#### newInstance() 메소드
+
+---
+
+- Class 클래스메소드
+- new 키워드를 사용하지 않고 클래스 정보를 활용하여 인스턴스를 생성하는 메소드
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(111).png>)
+
+#### Class.forName() 메소드로 동적 로딩 하기
+
+---
+
+- 동적 로딩이란? 컴파일시에 데이터 타입이 모두 biding 되어 자료형이 로딩되는 것(static loding)이 아니라 실행중에 데이터 타입을 알고 biding되는 방식
+- 프로그래밍 할 때는 어떤 클래스를 사용할지 모를 때 변수로 처리하고 실행될 때 해당 변수에 대입된 값의 클래스가 실행될 수 있도록 Class클래스에서 제공하느 static메소드
+- 실행 시에 로딩되므로 경우에 따라 다른 클래스가 사용될 수 있어 유용함
+- 컴파일 타임에 체크 할 수 없으므로 해당 문자열에 대한 클래스가 없는 경우 예외(ClassNotFoundException)이 발생할 수 있음
+
+```
+String className = "classex.Person"
+Class pClass = Class.forName(className);
+```
