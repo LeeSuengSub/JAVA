@@ -131,3 +131,131 @@ GenericPrint<T> 클래스 정의하기
 ---
 
 ![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(127).png>)
+
+## 컬렉션 프레임워크 - ArrayList
+
+---
+
+### 컬렉션 프레임워크
+
+---
+
+- 프로그램 구현에 필요한 자료구조(Data Structure)를 구현해 놓은 라이브러리
+- java.util 패키지에 구현되어 있음
+- 개발에 소요되는 시간을 절약하면서 최적화 된 알고리즘을 사용할 수 있음
+- 여러 인터페이스와 구현 클래스 사용 방법을 이해해야 함
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(128).png>)
+
+### collection 인터페이스
+
+---
+
+- 하나의 객체를 관리하기 위한 메소드가 선언된 인터페이스
+- 하위에 List와 Set 인터페이스가 있음
+- 여러 클래스들이 Collection 인터페이스를 구현함
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(129).png>)
+
+- Collection 인터페이스에 선언된 주요 메소드
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(130).png>)
+
+### Map 인터페이스
+
+---
+
+- 쌍(pair)로 이루어진 객체를 관리하는데 사용
+- key-value 의 쌍으로 이루어짐
+- key는 중복 될 수 없음
+- 여러 클래스들이 Map 인터페이스를 구현함
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(131).png>)
+
+- Map 인터페이스에 선언된 주요 메소드
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(132).png>)
+
+### List 인터페이스
+
+---
+
+- Collection 하위 인터페이스
+- 객체를 순서에 따라 저장하고 관리하는데 필요한 메소드가 선언된 인터페이스
+- 배열의 기능을 구현하기 위한 인터페이스
+- ArrayList, Vector, LinkedList 등이 많이 사용 됨
+
+### ArrayList와 Vector
+
+---
+
+- 객체 배열을 구현한 클래스
+- Vector는 자바2부터 제공된 클래스
+- 멀티 쓰레드 상태에서 리소스에 대한 동기화가 필요한 경우 Vector를 사용
+- 일반적으로 ArrayList를 더 많이 사용함
+- ArrayList에 동기화 기능이 추가되어야 하는 경우
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(133).png>)
+
+- 공기화(synchronization) : 두 개의 쓰레드가 동시에 하나의 리소스에 접근 할 때 순서를 맞추어서 데이터에 오류가 발생하지 않도록 함
+
+### LinkedList 클래스
+
+---
+
+- 논리적으로 순차적인 자료구조가 구현된 클래스
+- 다음 요소에 대한 참조값을 가지고 있음
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(134).png>)
+
+- 요소의 추가 / 삭제에 드는 비용이 배열보다 적음
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(135).png>)
+
+### Stack 과 Queue
+
+---
+
+- Stack과 Queue의 기능은 구현된 클래스가 있지만 ArrayList나 LinkedList를 활용하여서 사용할 수도 있음
+- Stack : Last in First Out(LIFO)
+  - 맨 마지막에 추가된 요소가 먼저 꺼내지는 자료구조  
+    게임의 무르기 기능, 최근 자료 추출등에서 사용
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(136).png>)
+
+- Queue : First In First Out (FIFO)
+- 먼저 저장된 자료가 먼저 꺼내지는 선착순, 대기열구조
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(137).png>)
+
+### Iterator 사용하여 순회하기
+
+---
+
+- Collection의 개체를 순회하는 인터페이스
+- iterator()메소드 호출
+
+```
+Iterator ir = memberArrayList.iterator();
+```
+
+- 선언된 메소드
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(138).png>)
+
+### Iterator 사용하여 순회하기 예
+
+---
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(139).png>)
+
+### Set 인터페이스
+
+---
+
+- Collection 하위의 인터페이스
+- 중복을 허용하지 않음
+- 아이디, 주민번호, 사번 등 유일한 값이나 객체를 관리할 때 사용
+- List는 순서기반의 인터페이스지만, Set은 순서가 없음
+- 저장된 순서와 출력순서는 다를 수 있음
+- get(i)메소드가 제공되지 않음
