@@ -212,6 +212,10 @@ GenericPrint<T> 클래스 정의하기
 
 ![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(135).png>)
 
+## 컬렉션 프레임워크 - Stack, Queue, HashMap
+
+---
+
 ### Stack 과 Queue
 
 ---
@@ -259,3 +263,89 @@ Iterator ir = memberArrayList.iterator();
 - List는 순서기반의 인터페이스지만, Set은 순서가 없음
 - 저장된 순서와 출력순서는 다를 수 있음
 - get(i)메소드가 제공되지 않음
+
+## 컬렉션 프레임워크 - TreeSet, HashMap, TreeMap
+
+---
+
+### TreeSet 클래스
+
+---
+
+- 객체의 정렬에 사용되는 클래스
+- 중복을 허용하지 않으면서 오름차순이나 내림차순으로 객체를 정렬함
+- 내부적으로 이진 검색 트리(binary search tree)로 구현되어 있음
+- 이진 검색 트리에 자료가 저장될 때 비교하여 저장될 위치를 정함
+- 객체 비교를 위해 Comparable이나 Comparator 인터페이스를 구현 해야 함
+
+### Comparable 인터페이스와 Comparator 인터페이스
+
+---
+
+- 정렬 대상이 되는 클래스가 구현해야 하는 인터페이스
+- Comparable은 comparaTo() 메소드를 구현  
+  매개변수와 객체 자신(this)를 비교
+- Comparator는 Compare()메소드를 구현
+  두 개의 매개 변수를 비교
+  TreeSet생성자에 Comparator가 구현된 객체를 매개변수로 전달
+
+```
+TreeSet<Member> treeSet = new TreeSet<Member>(new Member( ));
+```
+
+- 일반적으로 Comparable을 더 많이 사용
+- 이미 Comparable이 구현된 경우 Comparator를 이용하여 다른 정렬 방식을 정의 할 수 있음
+
+### Comparable 인터페이스 구현 예
+
+---
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(140).png>)
+
+### Map 인터페이스
+
+---
+
+- key-value pair의 객체를 관리하는데 필요한 메소드가 정의됨
+- key는 중복 될 수 없음
+- 검색을 위한 자료 구조
+- key를 이용하여 값을 저장하거나 검색, 삭제 할때 사용하면 편리함
+- 내부적으로 hash방식으로 구현됨
+
+```
+index = hash(key) // index는 저장 위치
+```
+
+- key가 되는 객체는 객체의 유일성함의 여부를 알기 위해 equals()와 hashCode() 메소드를 재정의 함
+
+### HashMap 클래스
+
+---
+
+- Map 인터페이스를 구현한 클래스 중 가장 일반적으로 사용하는 클래스
+- HashTable 클래스는 자바2 부터 제공된 클래스로 Vector 처럼 동기화를 제공함
+- 여러 메소드를 활용하여 pair자료를 쉽고 빠르게 관리할 수 있음
+
+### HashMap 클래스 사용 예
+
+---
+
+- 객체 추가 하고 검색하여 삭제하기
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(141).png>)
+
+- 객체 순회하기
+- itrator() 메소드는 하나의 Collection 객체만을 반환하므로 pair로 이루어진 객체는 각각 순회해야 함
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(142).png>)
+
+### TreeMap클래스
+
+---
+
+- key객체를 정렬하여 key-value를 pair로 관리하는 클래스
+- key에 사용되는 클래스에 Comparable, Comparator인터페이스를 구현
+- java에 많은 클래스들은 이미 Comparable이 구현되어 있음
+- 구현된 클래스를 key로 사용하는 경우는 구현할 필요 없음
+
+![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(143).png>)
