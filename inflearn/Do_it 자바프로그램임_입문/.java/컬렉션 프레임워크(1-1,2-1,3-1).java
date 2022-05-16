@@ -1,9 +1,13 @@
 package Collection;
 
-public class Member {
+import java.util.Comparator;
+
+public class Member implements Comparable<Member>, Comparator<Member>{
 
 	private int memberId;
 	private String memberName;
+	
+	public Member() {}
 	
 	public Member(int memberId, String memberName) {
 		this.memberId = memberId;
@@ -43,6 +47,18 @@ public class Member {
 			else return false;
 		}
 		return false;
+	}
+
+	@Override
+	public int compareTo(Member member) {
+		
+		return (this.memberName.compareTo(member.memberName)) *(-1);//이름을 기준으로 오름차순과 내림차순
+//		return (this.memberId - member.memberId)*(-1);//아이디를 기준으로 오름차순과 내림차순(현재 내림차순)
+	}
+
+	@Override
+	public int compare(Member member1, Member member2) { // 앞에가 나고 뒤에가 넘어온 얘
+		return (member1.memberId - member2.memberId);
 	}
 	
 	
