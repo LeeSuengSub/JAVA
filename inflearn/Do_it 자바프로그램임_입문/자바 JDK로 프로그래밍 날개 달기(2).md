@@ -31,7 +31,7 @@
 
 ---
 
-- key 객체를 정력하여 key-value를 pair로 관리하는 클래스
+- key 객체를 정렬하여 key-value를 pair로 관리하는 클래스
 - key에 사용되는 클래스에 Comparable, Comparator 인터페이스를 구현
 - java에 많은 클래스들은 이미 Comparable이 구현되어 있음
 - 구현된 클래스를 key로 사용하느 경우는 구현할 필요 없음
@@ -111,7 +111,7 @@ GenericPrint<T> 클래스 정의하기
 
 ---
 
-- 메소드의 매개변수를 자료형 매개변수로 사용하느 경우
+- 메소드의 매개변수를 자료형 매개변수로 사용하는 경우
 - 자료형 매개 변수가 하나 이상인 경우
 - 제네릭 메소드의 일반 형식
 
@@ -166,7 +166,7 @@ GenericPrint<T> 클래스 정의하기
 ---
 
 - 쌍(pair)로 이루어진 객체를 관리하는데 사용
-- key-value 의 쌍으로 이루어짐
+- key-value의 쌍으로 이루어짐
 - key는 중복 될 수 없음
 - 여러 클래스들이 Map 인터페이스를 구현함
 
@@ -197,7 +197,7 @@ GenericPrint<T> 클래스 정의하기
 
 ![](<./%EC%82%AC%EC%A7%84_%EC%9E%90%EB%A3%8C/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7(133).png>)
 
-- 공기화(synchronization) : 두 개의 쓰레드가 동시에 하나의 리소스에 접근 할 때 순서를 맞추어서 데이터에 오류가 발생하지 않도록 함
+- 동기화(synchronization) : 두 개의 쓰레드가 동시에 하나의 리소스에 접근 할 때 순서를 맞추어서 데이터에 오류가 발생하지 않도록 함
 
 ### LinkedList 클래스
 
@@ -316,7 +316,7 @@ TreeSet<Member> treeSet = new TreeSet<Member>(new Member( ));
 index = hash(key) // index는 저장 위치
 ```
 
-- key가 되는 객체는 객체의 유일성함의 여부를 알기 위해 equals()와 hashCode() 메소드를 재정의 함
+- key가 되는 객체는 객체의 유일성함의 여부를 알기 위해 equals()와 hashCode() 메소드를 재정의함
 
 ### HashMap 클래스
 
